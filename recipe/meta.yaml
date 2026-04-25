@@ -1,5 +1,5 @@
 {% set name = "http_parser.rb" %}
-{% set version = "0.6.0" %}
+{% set version = "0.8.1" %}
 
 package:
   name: rb-{{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://rubygems.org/downloads/{{ name }}-{{ version }}.gem
-  sha256: f11d0aec50ef26a7d1f991e627ac88acdb5979282aeba7a5c3be6ce0636ed196
+  sha256: 9ae8df145b39aa5398b2f90090d651c67bd8e2ebfe4507c966579f641e11097a
 
 build:
-  number: 1
+  number: 0
   script:
     - gem install -N -l -V --norc --ignore-dependencies {{ name }}-{{ version }}.gem
     - gem unpack {{ name }}-{{ version }}.gem
@@ -20,6 +20,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - ruby
   run:
